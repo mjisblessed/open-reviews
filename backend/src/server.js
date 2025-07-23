@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 5001;
 
 // Middleware 
 app.use(cors({
-  origin: 'http://localhost:5173', // Adjust this to your frontend URL
+  origin: 'https://open-reviews.vercel.app', // Adjust this to your frontend URL
 }));
 app.use(express.json()); // to get body data in JSON format
 // app.use(rateLimiter)
