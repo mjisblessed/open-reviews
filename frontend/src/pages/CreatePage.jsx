@@ -26,17 +26,17 @@ const CreatePage = () => {
         content,
       });
 
-      toast.success("Note created successfully!");
+      toast.success("Review created successfully!");
       navigate("/");
     } catch (error) {
-      console.log("Error creating note", error);
+      console.log("Error creating Review", error);
       if (error.response.status === 429) {
-        toast.error("Slow down! You're creating notes too fast", {
+        toast.error("Slow down! You're creating Reviews too fast", {
           duration: 4000,
           icon: "💀",
         });
       } else {
-        toast.error("Failed to create note");
+        toast.error("Failed to create Review");
       }
     } finally {
       setLoading(false);
@@ -49,12 +49,12 @@ const CreatePage = () => {
         <div className="max-w-2xl mx-auto">
           <Link to={"/"} className="btn btn-ghost mb-6">
             <ArrowLeftIcon className="size-5" />
-            Back to Notes
+            Back to Reviews
           </Link>
 
           <div className="card bg-base-100">
             <div className="card-body">
-              <h2 className="card-title text-2xl mb-4">Create New Note</h2>
+              <h2 className="card-title text-2xl mb-4">Create New Review</h2>
               <form onSubmit={handleSubmit}>
                 <div className="form-control mb-4">
                   <label className="label">
@@ -62,7 +62,7 @@ const CreatePage = () => {
                   </label>
                   <input
                     type="text"
-                    placeholder="Note Title"
+                    placeholder="Review Title"
                     className="input input-bordered"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
@@ -74,7 +74,7 @@ const CreatePage = () => {
                     <span className="label-text">Content</span>
                   </label>
                   <textarea
-                    placeholder="Write your note here..."
+                    placeholder="Write your review here..."
                     className="textarea textarea-bordered h-32"
                     value={content}
                     onChange={(e) => setContent(e.target.value)}
@@ -83,7 +83,7 @@ const CreatePage = () => {
 
                 <div className="card-actions justify-end">
                   <button type="submit" className="btn btn-primary" disabled={loading}>
-                    {loading ? "Creating..." : "Create Note"}
+                    {loading ? "Creating..." : "Create Review"}
                   </button>
                 </div>
               </form>

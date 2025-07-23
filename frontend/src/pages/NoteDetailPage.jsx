@@ -20,8 +20,8 @@ const NoteDetailPage = () => {
         const res = await api.get(`/notes/${id}`);
         setNote(res.data);
       } catch (error) {
-        console.log("Error in fetching note", error);
-        toast.error("Failed to fetch the note");
+        console.log("Error in fetching review", error);
+        toast.error("Failed to fetch the review");
       } finally {
         setLoading(false);
       }
@@ -31,15 +31,15 @@ const NoteDetailPage = () => {
   }, [id]);
 
   const handleDelete = async () => {
-    if (!window.confirm("Are you sure you want to delete this note?")) return;
+    if (!window.confirm("Are you sure you want to delete this review?")) return;
 
     try {
       await api.delete(`/notes/${id}`);
-      toast.success("Note deleted");
+      toast.success("Review deleted");
       navigate("/");
     } catch (error) {
-      console.log("Error deleting the note:", error);
-      toast.error("Failed to delete note");
+      console.log("Error deleting the review:", error);
+      toast.error("Failed to delete review");
     }
   };
 
@@ -53,11 +53,11 @@ const NoteDetailPage = () => {
 
     try {
       await api.put(`/notes/${id}`, note);
-      toast.success("Note updated successfully");
+      toast.success("Review updated successfully");
       navigate("/");
     } catch (error) {
-      console.log("Error saving the note:", error);
-      toast.error("Failed to update note");
+      console.log("Error saving the review:", error);
+      toast.error("Failed to update review");
     } finally {
       setSaving(false);
     }
@@ -78,11 +78,11 @@ const NoteDetailPage = () => {
           <div className="flex items-center justify-between mb-6">
             <Link to="/" className="btn btn-ghost">
               <ArrowLeftIcon className="h-5 w-5" />
-              Back to Notes
+              Back to Reviews
             </Link>
             <button onClick={handleDelete} className="btn btn-error btn-outline">
               <Trash2Icon className="h-5 w-5" />
-              Delete Note
+              Delete Review
             </button>
           </div>
 
@@ -94,7 +94,7 @@ const NoteDetailPage = () => {
                 </label>
                 <input
                   type="text"
-                  placeholder="Note title"
+                  placeholder="Review title"
                   className="input input-bordered"
                   value={note.title}
                   onChange={(e) => setNote({ ...note, title: e.target.value })}
@@ -106,7 +106,7 @@ const NoteDetailPage = () => {
                   <span className="label-text">Content</span>
                 </label>
                 <textarea
-                  placeholder="Write your note here..."
+                  placeholder="Write your review here..."
                   className="textarea textarea-bordered h-32"
                   value={note.content}
                   onChange={(e) => setNote({ ...note, content: e.target.value })}
