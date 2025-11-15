@@ -2,12 +2,15 @@ import { useState } from "react";
 import { useAuth } from "../contexts/AuthContext";
 import { KeyIcon } from "lucide-react";
 import toast from "react-hot-toast";
+import { useNavigate } from 'react-router-dom';
 
 const AdminLoginPage = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const { loginAsAdmin } = useAuth();
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -25,6 +28,7 @@ const AdminLoginPage = () => {
       
       if (success) {
         toast.success("Welcome back, Admin!");
+        navigate("/");
       } else {
         toast.error("Invalid credentials. Please try again.");
       }
