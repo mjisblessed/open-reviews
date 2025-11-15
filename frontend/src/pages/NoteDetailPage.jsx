@@ -20,8 +20,8 @@ const NoteDetailPage = () => {
         const res = await api.get(`/notes/${id}`);
         setNote(res.data);
       } catch (error) {
-        console.log("Error in fetching review", error);
-        toast.error("Failed to fetch the review");
+        console.log("Error in fetching Sermon", error);
+        toast.error("Failed to fetch the Sermon");
       } finally {
         setLoading(false);
       }
@@ -31,15 +31,15 @@ const NoteDetailPage = () => {
   }, [id]);
 
   const handleDelete = async () => {
-    if (!window.confirm("Are you sure you want to delete this review?")) return;
+    if (!window.confirm("Are you sure you want to delete this Sermon?")) return;
 
     try {
       await api.delete(`/notes/${id}`);
-      toast.success("Review deleted");
+      toast.success("Sermon deleted");
       navigate("/");
     } catch (error) {
-      console.log("Error deleting the review:", error);
-      toast.error("Failed to delete review");
+      console.log("Error deleting the Sermon:", error);
+      toast.error("Failed to delete Sermon");
     }
   };
 
@@ -53,11 +53,11 @@ const NoteDetailPage = () => {
 
     try {
       await api.put(`/notes/${id}`, note);
-      toast.success("Review updated successfully");
+      toast.success("Sermon updated successfully");
       navigate("/");
     } catch (error) {
-      console.log("Error saving the review:", error);
-      toast.error("Failed to update review");
+      console.log("Error saving the Sermon:", error);
+      toast.error("Failed to update Sermon");
     } finally {
       setSaving(false);
     }
@@ -78,11 +78,11 @@ const NoteDetailPage = () => {
           <div className="flex items-center justify-between mb-6">
             <Link to="/" className="btn btn-ghost">
               <ArrowLeftIcon className="h-5 w-5" />
-              Back to Reviews
+              Back to Sermons
             </Link>
             <button onClick={handleDelete} className="btn btn-error btn-outline">
               <Trash2Icon className="h-5 w-5" />
-              Delete Review
+              Delete Sermons
             </button>
           </div>
 

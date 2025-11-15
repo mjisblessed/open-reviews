@@ -26,17 +26,17 @@ const CreatePage = () => {
         content,
       });
 
-      toast.success("Review created successfully!");
+      toast.success("Sermon created successfully!");
       navigate("/");
     } catch (error) {
-      console.log("Error creating Review", error);
+      console.log("Error creating Sermon", error);
       if (error.response.status === 429) {
-        toast.error("Slow down! You're creating Reviews too fast", {
+        toast.error("Slow down! You're creating Sermons too fast", {
           duration: 4000,
           icon: "💀",
         });
       } else {
-        toast.error("Failed to create Review");
+        toast.error("Failed to create Sermon");
       }
     } finally {
       setLoading(false);
@@ -49,12 +49,12 @@ const CreatePage = () => {
         <div className="max-w-2xl mx-auto">
           <Link to={"/"} className="btn btn-ghost mb-6">
             <ArrowLeftIcon className="size-5" />
-            Back to Reviews
+            Back to Sermons
           </Link>
 
           <div className="card bg-base-100">
             <div className="card-body">
-              <h2 className="card-title text-2xl mb-4">Create New Review</h2>
+              <h2 className="card-title text-2xl mb-4">Create New Sermon</h2>
               <form onSubmit={handleSubmit}>
                 <div className="form-control mb-4">
                   <label className="label">
@@ -62,7 +62,7 @@ const CreatePage = () => {
                   </label>
                   <input
                     type="text"
-                    placeholder="Review Title"
+                    placeholder="Sermon Title"
                     className="input input-bordered"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
@@ -74,7 +74,7 @@ const CreatePage = () => {
                     <span className="label-text">Content</span>
                   </label>
                   <textarea
-                    placeholder="Write your review here..."
+                    placeholder="Write your Sermon here..."
                     className="textarea textarea-bordered h-32"
                     value={content}
                     onChange={(e) => setContent(e.target.value)}
@@ -83,7 +83,7 @@ const CreatePage = () => {
 
                 <div className="card-actions justify-end">
                   <button type="submit" className="btn btn-primary" disabled={loading}>
-                    {loading ? "Creating..." : "Create Review"}
+                    {loading ? "Creating..." : "Create Sermon"}
                   </button>
                 </div>
               </form>
